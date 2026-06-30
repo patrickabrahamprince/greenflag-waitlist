@@ -708,6 +708,11 @@
     color:var(--muted-dark);
     margin-bottom:10px;
   }
+  .req-star{
+    color:var(--gold-bright);
+    letter-spacing:0;
+    text-transform:none;
+  }
   .form-row input, .form-row select{
     width:100%;
     background:transparent;
@@ -1192,7 +1197,7 @@
     <div class="form-card" id="formCard">
       <form id="waitlistForm">
         <div class="form-row">
-          <label for="name">Full Name</label>
+          <label for="name">Full Name <span class="req-star">*</span></label>
           <input type="text" id="name" placeholder="Your name" required />
         </div>
         <div class="form-row">
@@ -1200,7 +1205,7 @@
           <input type="email" id="email" placeholder="you@email.com" required />
         </div>
         <div class="form-row">
-          <label for="phone">Phone Number</label>
+          <label for="phone">Phone Number <span class="req-star">*</span></label>
           <input type="tel" id="phone" placeholder="+91 00000 00000" required />
         </div>
         <div class="form-row">
@@ -1304,6 +1309,16 @@
     const age = document.getElementById('age').value.trim();
     const location = document.getElementById('location').value.trim();
 
+    if(!name){
+      alert('Please enter your full name.');
+      document.getElementById('name').focus();
+      return;
+    }
+    if(!phone){
+      alert('Please enter your phone number.');
+      document.getElementById('phone').focus();
+      return;
+    }
     if(!selectedGender){
       alert('Please select a gender.');
       return;
