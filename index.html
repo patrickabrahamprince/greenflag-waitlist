@@ -60,12 +60,19 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:28px 48px;
     z-index:100;
-    background:linear-gradient(to bottom, rgba(10,10,9,0.85), transparent);
+    background:rgba(10,10,9,0.78);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
   }
   .logo{display:flex;align-items:center;gap:9px;}
   .logo-mark-img{height:28px;width:auto;display:block;}
   .logo-word-img{height:17px;width:auto;display:block;}
-  @media (max-width:480px){ .logo-mark-img{height:22px;} .logo-word-img{height:13px;} }
+  @media (max-width:480px){
+    .logo-mark-img{height:22px;} .logo-word-img{height:13px;}
+    .hero-actions{flex-direction:column;align-items:stretch;gap:12px;}
+    .btn-primary,.btn-secondary{width:100%;text-align:center;white-space:nowrap;padding:16px 20px;}
+    .nav-cta{padding:9px 18px;font-size:10px;}
+  }
   .nav-cta{
     border:1px solid var(--line-gold);
     padding:10px 24px;
