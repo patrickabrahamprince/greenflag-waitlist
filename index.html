@@ -139,6 +139,7 @@
   @media(max-width:768px){
     .nav-links{display:none;}
     .nav-cta{display:none;}
+    .nav-ig{display:none;}
     .nav-hamburger{display:flex;}
     .nav-mobile-menu{display:flex;}
   }
@@ -1023,6 +1024,10 @@
   .ig-tagline{color:var(--muted);font-size:15px;font-weight:300;letter-spacing:0.02em;line-height:1.6;margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto;}
   .ig-follow-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:14px 32px;border-radius:6px;text-decoration:none;transition:opacity .25s ease;}
   .ig-follow-btn:hover{opacity:0.85;}
+
+  .nav-ig{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:400;text-decoration:none;transition:color .25s ease;white-space:nowrap;flex-shrink:0;}
+  .nav-ig:hover{color:var(--cream);}
+  .nav-ig svg{flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -1037,6 +1042,7 @@
     <a href="#app" class="nav-link">The App</a>
     <a href="#waitlist" class="nav-link">Waitlist</a>
   </div>
+  <a href="https://www.instagram.com/musigoevents/" target="_blank" rel="noopener" class="nav-ig"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>@musigoevents</a>
   <a href="#waitlist" class="nav-cta">Join Now</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" onclick="toggleNav()">
     <span></span><span></span><span></span>
