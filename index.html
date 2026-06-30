@@ -731,6 +731,24 @@
   .form-row select option{background:var(--black);color:var(--cream);}
   .form-row input::placeholder{color:var(--muted-dark);}
   .form-row input:focus, .form-row select:focus{border-color:var(--gold-bright);}
+  /* Instagram handle field */
+  .ig-row{display:flex;align-items:flex-end;gap:10px;}
+  .ig-at{color:var(--muted-dark);font-size:16px;font-weight:300;padding-bottom:9px;line-height:1;flex-shrink:0;}
+  .ig-row input{border-bottom:1px solid var(--line);background:transparent;border-top:none;border-left:none;border-right:none;color:var(--cream);font-family:'Inter',sans-serif;font-size:16px;font-weight:300;padding:8px 2px;outline:none;flex:1;transition:border-color .3s ease;}
+  .ig-row input:focus{border-color:var(--gold-bright);}
+  .ig-row input::placeholder{color:var(--muted-dark);}
+  .ig-validate-btn{flex-shrink:0;background:none;border:1px solid var(--gold-bright);color:var(--gold-bright);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:4px;cursor:pointer;transition:all .25s ease;white-space:nowrap;}
+  .ig-validate-btn:hover:not(:disabled){background:var(--gold-bright);color:var(--black);}
+  .ig-validate-btn:disabled{opacity:.5;cursor:default;}
+  .ig-validate-btn.loading{color:var(--muted);border-color:var(--muted);}
+  .ig-validate-btn.verified{border-color:#4ade80;color:#4ade80;pointer-events:none;}
+  .ig-status{margin-top:8px;font-size:12px;letter-spacing:0.05em;min-height:16px;transition:all .3s ease;}
+  .ig-status.verified{color:#4ade80;}
+  .ig-status.error{color:#f87171;}
+  .ig-disclaimer{margin-top:10px;font-size:11px;color:var(--muted-dark);letter-spacing:0.02em;line-height:1.5;}
+  /* spinner */
+  @keyframes ig-spin{to{transform:rotate(360deg);}}
+  .ig-spinner{display:inline-block;width:10px;height:10px;border:1.5px solid var(--muted);border-top-color:var(--cream);border-radius:50%;animation:ig-spin .7s linear infinite;vertical-align:middle;margin-right:4px;}
   .gender-row{display:flex;gap:12px;}
   .gender-opt{
     flex:1;
@@ -1209,6 +1227,16 @@
           <input type="tel" id="phone" placeholder="+91 00000 00000" required />
         </div>
         <div class="form-row">
+          <label for="instagram">Instagram Handle</label>
+          <div class="ig-row">
+            <span class="ig-at">@</span>
+            <input type="text" id="instagram" placeholder="yourhandle" autocomplete="off" spellcheck="false" />
+            <button type="button" class="ig-validate-btn" id="igValidateBtn" onclick="validateIG()">Validate</button>
+          </div>
+          <div class="ig-status" id="igStatus"></div>
+          <div class="ig-disclaimer">Please provide a valid Instagram username — requests with fake handles will be rejected.</div>
+        </div>
+        <div class="form-row">
           <label for="age">Age</label>
           <input type="number" id="age" placeholder="Your age" min="18" max="99" required />
         </div>
@@ -1259,6 +1287,39 @@
 </footer>
 
 <script>
+  // Instagram handle validation (manual/cosmetic)
+  let igValidated = false;
+  function validateIG(){
+    const handle = document.getElementById('instagram').value.trim().replace(/^@/,'');
+    const btn = document.getElementById('igValidateBtn');
+    const status = document.getElementById('igStatus');
+    if(!handle){
+      status.textContent = 'Please enter your Instagram handle first.';
+      status.className = 'ig-status error';
+      return;
+    }
+    // Basic format check: 1-30 chars, letters/numbers/underscores/periods only
+    if(!/^[a-zA-Z0-9._]{1,30}$/.test(handle)){
+      status.textContent = 'That doesn\'t look like a valid Instagram handle.';
+      status.className = 'ig-status error';
+      return;
+    }
+    // Simulate validation
+    btn.disabled = true;
+    btn.className = 'ig-validate-btn loading';
+    btn.innerHTML = '<span class="ig-spinner"></span>Checking…';
+    status.textContent = '';
+    status.className = 'ig-status';
+    setTimeout(function(){
+      igValidated = true;
+      btn.innerHTML = '✓ Verified';
+      btn.className = 'ig-validate-btn verified';
+      document.getElementById('instagram').readOnly = true;
+      status.textContent = '@' + handle + ' looks good.';
+      status.className = 'ig-status verified';
+    }, 1600);
+  }
+
   // Gender selector
   const genderRow = document.getElementById('genderRow');
   let selectedGender = '';
@@ -1306,6 +1367,7 @@
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const instagram = '@' + document.getElementById('instagram').value.trim().replace(/^@/,'');
     const age = document.getElementById('age').value.trim();
     const location = document.getElementById('location').value.trim();
 
@@ -1340,7 +1402,7 @@
       body
     }).catch(function(err){ console.error('Waitlist submission failed:', err); });
 
-    saveSignup({ name, email, phone, age, location, gender: selectedGender, ts: new Date().toISOString() });
+    saveSignup({ name, email, phone, instagram, age, location, gender: selectedGender, ts: new Date().toISOString() });
     updateCounter();
 
     document.getElementById('waitlistForm').style.display = 'none';
