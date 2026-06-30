@@ -1165,6 +1165,14 @@
           <input type="tel" id="phone" placeholder="+91 00000 00000" required />
         </div>
         <div class="form-row">
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="Your age" min="18" max="99" required />
+        </div>
+        <div class="form-row">
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="City" required />
+        </div>
+        <div class="form-row">
           <label>Gender</label>
           <div class="gender-row" id="genderRow">
             <div class="gender-opt" data-val="Woman">Woman</div>
@@ -1226,18 +1234,47 @@
   }
   updateCounter();
 
+  // Google Form backend (writes to GreenFlag Waitlist Google Sheet)
+  const FORM_ACTION_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScJu1fSLIJ5ilQnZnMZnbA_qU_x_ozwzFtqcI3WOZAxR-roUA/formResponse';
+  const FORM_ENTRIES = {
+    name: 'entry.413683190',
+    email: 'entry.534729257',
+    phone: 'entry.1587319672',
+    gender: 'entry.1529216230',
+    age: 'entry.1762215511',
+    location: 'entry.631988683'
+  };
+
   document.getElementById('waitlistForm').addEventListener('submit', function(e){
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const location = document.getElementById('location').value.trim();
 
     if(!selectedGender){
       alert('Please select a gender.');
       return;
     }
 
-    saveSignup({ name, email, phone, gender: selectedGender, ts: new Date().toISOString() });
+    const body = new URLSearchParams({
+      [FORM_ENTRIES.name]: name,
+      [FORM_ENTRIES.email]: email,
+      [FORM_ENTRIES.phone]: phone,
+      [FORM_ENTRIES.gender]: selectedGender,
+      [FORM_ENTRIES.age]: age,
+      [FORM_ENTRIES.location]: location
+    });
+
+    fetch(FORM_ACTION_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
+    }).catch(function(err){ console.error('Waitlist submission failed:', err); });
+
+    saveSignup({ name, email, phone, age, location, gender: selectedGender, ts: new Date().toISOString() });
     updateCounter();
 
     document.getElementById('waitlistForm').style.display = 'none';
