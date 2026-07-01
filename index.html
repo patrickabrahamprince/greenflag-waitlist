@@ -1033,23 +1033,12 @@
   .ig-carousel-wrap{width:100%;overflow:hidden;margin:32px 0 36px;position:relative;}
   .ig-carousel{display:flex;gap:14px;transition:transform .4s cubic-bezier(.25,.8,.25,1);will-change:transform;cursor:grab;user-select:none;}
   .ig-carousel.dragging{transition:none;cursor:grabbing;}
-  .ig-post{flex:0 0 calc(33.333% - 10px);aspect-ratio:1/1;border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);}
-  .ig-post-bg{width:100%;height:100%;object-fit:cover;display:block;}
-  .ig-post-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 55%);opacity:0;transition:opacity .3s ease;}
-  .ig-post:hover .ig-post-overlay{opacity:1;}
-  .ig-post-stats{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:16px;opacity:0;transition:opacity .3s ease;}
-  .ig-post:hover .ig-post-stats{opacity:1;}
-  .ig-post-stats span{color:#fff;font-size:12px;font-weight:500;display:flex;align-items:center;gap:5px;letter-spacing:0.03em;}
+  .ig-post{flex:0 0 calc(33.333% - 10px);border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);background:#000;min-height:420px;}
+  .ig-post iframe{width:100%;height:100%;min-height:420px;border:none;display:block;}
   .ig-carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:16px;}
   .ig-dot{width:5px;height:5px;border-radius:50%;background:var(--line);border:none;padding:0;cursor:pointer;transition:background .25s ease,transform .25s ease;}
   .ig-dot.active{background:var(--gold-bright);transform:scale(1.3);}
-  /* placeholder gradients */
-  .ig-ph-1{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);}
-  .ig-ph-2{background:linear-gradient(135deg,#0d1b2a 0%,#1b2838 50%,#243447 100%);}
-  .ig-ph-3{background:linear-gradient(135deg,#1a0a00 0%,#3d1a00 50%,#6b3000 100%);}
-  .ig-ph-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
-  .ig-ph-label svg{opacity:0.18;}
-  .ig-ph-label span{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);font-weight:500;}
+
   @media(max-width:600px){
     .ig-post{flex:0 0 75%;}
   }
@@ -1360,38 +1349,14 @@
 
     <div class="ig-carousel-wrap">
       <div class="ig-carousel" id="igCarousel">
-        <div class="ig-post ig-ph-1">
-          <div class="ig-ph-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
-            <span>Coming Soon</span>
-          </div>
-          <div class="ig-post-overlay"></div>
-          <div class="ig-post-stats">
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>—</span>
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>—</span>
-          </div>
+        <div class="ig-post">
+          <iframe src="https://www.instagram.com/p/DaOLqESzSsr/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
         </div>
-        <div class="ig-post ig-ph-2">
-          <div class="ig-ph-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
-            <span>Coming Soon</span>
-          </div>
-          <div class="ig-post-overlay"></div>
-          <div class="ig-post-stats">
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>—</span>
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>—</span>
-          </div>
+        <div class="ig-post">
+          <iframe src="https://www.instagram.com/p/DaONedzzniO/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
         </div>
-        <div class="ig-post ig-ph-3">
-          <div class="ig-ph-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
-            <span>Coming Soon</span>
-          </div>
-          <div class="ig-post-overlay"></div>
-          <div class="ig-post-stats">
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>—</span>
-            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>—</span>
-          </div>
+        <div class="ig-post">
+          <iframe src="https://www.instagram.com/p/DaOMSy5zStQ/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
         </div>
       </div>
       <div class="ig-carousel-dots">
