@@ -1642,11 +1642,29 @@
     dots.forEach(function(d, i){ d.classList.toggle('active', i === current); });
   }
 
-  window.igGoTo = goTo;
+  window.igGoTo = function(idx){ goTo(idx); restartAutoplay(); };
+
+  // ── autoplay / ticker ──
+  var autoplayDelay = 4000;
+  var autoplayTimer = null;
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(function(){
+      goTo(current + 1 >= total ? 0 : current + 1);
+    }, autoplayDelay);
+  }
+  function stopAutoplay(){
+    if(autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
+  }
+  function restartAutoplay(){ startAutoplay(); }
+
+  var wrap = track.closest('.ig-carousel-wrap') || track.parentElement;
+  wrap.addEventListener('mouseenter', stopAutoplay);
+  wrap.addEventListener('mouseleave', startAutoplay);
 
   // drag / swipe
   track.addEventListener('mousedown', function(e){
-    isDragging = true; startX = e.clientX; track.classList.add('dragging');
+    isDragging = true; startX = e.clientX; track.classList.add('dragging'); stopAutoplay();
   });
   window.addEventListener('mousemove', function(e){
     if(!isDragging) return;
@@ -1658,13 +1676,17 @@
     if(dragDelta < -50) goTo(current + 1);
     else if(dragDelta > 50) goTo(current - 1);
     dragDelta = 0;
+    restartAutoplay();
   });
-  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; stopAutoplay(); }, {passive:true});
   track.addEventListener('touchend', function(e){
     var diff = e.changedTouches[0].clientX - startX;
     if(diff < -40) goTo(current + 1);
     else if(diff > 40) goTo(current - 1);
+    restartAutoplay();
   });
+
+  startAutoplay();
 })();
 
 </script>
