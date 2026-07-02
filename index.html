@@ -1054,8 +1054,8 @@
   .ig-carousel-wrap{width:100%;overflow:hidden;margin:32px 0 36px;position:relative;}
   .ig-carousel{display:flex;gap:14px;transition:transform .4s cubic-bezier(.25,.8,.25,1);will-change:transform;cursor:grab;user-select:none;}
   .ig-carousel.dragging{transition:none;cursor:grabbing;}
-  .ig-post{flex:0 0 100%;border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);background:#000;min-height:600px;}
-  .ig-post iframe{width:100%;height:100%;min-height:600px;border:none;display:block;}
+  .ig-post{flex:0 0 100%;border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);background:#000;}
+  .ig-post iframe{width:100%;border:none;display:block;}
   .ig-carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:16px;}
   .ig-dot{width:5px;height:5px;border-radius:50%;background:var(--line);border:none;padding:0;cursor:pointer;transition:background .25s ease,transform .25s ease;}
   .ig-dot.active{background:var(--gold-bright);transform:scale(1.3);}
@@ -1624,11 +1624,32 @@
   var track = document.getElementById('igCarousel');
   if(!track) return;
   var dots = document.querySelectorAll('.ig-dot');
+  var posts = track.querySelectorAll('.ig-post');
   var current = 0;
   var total = 3;
   var startX = 0;
   var isDragging = false;
   var dragDelta = 0;
+
+  // Instagram's embed renders a fixed-ratio media block plus a fairly
+  // constant header/footer chrome height. Size each card so the full
+  // embed (header + media + like/comment row) fits without clipping.
+  function sizePosts(){
+    if(!posts.length) return;
+    var w = posts[0].getBoundingClientRect().width;
+    if(!w) return;
+    var h = Math.round(w * 1.334 + 210);
+    posts.forEach(function(p){
+      p.style.height = h + 'px';
+      var f = p.querySelector('iframe');
+      if(f) f.style.height = h + 'px';
+    });
+  }
+  sizePosts();
+  window.addEventListener('resize', sizePosts);
+  window.addEventListener('load', sizePosts);
+  setTimeout(sizePosts, 500);
+  setTimeout(sizePosts, 1500);
 
   function getOffset(idx){
     var postW = track.children[0].getBoundingClientRect().width;
