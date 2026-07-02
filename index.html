@@ -15,6 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GreenFlag — Earn It</title>
 <meta name="description" content="GreenFlag — a weekly invitation-only matchmaking experience in HSR Layout, Bangalore. Ten women, ten men, one table. No swiping, no algorithms, no ghosting.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.musigoevents.com/">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="https://www.musigoevents.com/favicon-32.png">
@@ -34,6 +36,141 @@
 <meta name="twitter:title" content="GreenFlag — Earn It">
 <meta name="twitter:description" content="We got tired of dating apps. GreenFlag is a weekly invitation-only matchmaking experience in HSR Layout, Bangalore.">
 <meta name="twitter:image" content="https://www.musigoevents.com/og-image.png">
+
+<!-- Structured data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GreenFlag",
+  "url": "https://www.musigoevents.com/",
+  "logo": "https://www.musigoevents.com/favicon.png",
+  "image": "https://www.musigoevents.com/og-image.png",
+  "description": "GreenFlag is a weekly invitation-only matchmaking experience and upcoming dating app in Bangalore, India. Ten women, ten men, one table — effort over swiping, the chat unlocks only once it's earned.",
+  "email": "musigoevents@gmail.com",
+  "areaServed": {
+    "@type": "City",
+    "name": "Bangalore"
+  },
+  "sameAs": [
+    "https://www.instagram.com/musigoevents/"
+  ]
+}
+</script>
+
+<!-- Structured data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GreenFlag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GreenFlag is a weekly invitation-only matchmaking experience in Bangalore, and an upcoming dating app. Instead of swiping, every woman sets a small task and the chat only unlocks once a man actually completes it — effort over swiping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to attend a GreenFlag date night?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entry is free for women. Entry for men is ₹599. Every date night is capped at 20 curated guests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are GreenFlag date nights held?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Date nights are held weekly in HSR Layout, Bangalore. The exact venue is shared with guests upon confirmation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I join a GreenFlag date night?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reserve a seat through the waitlist form on musigoevents.com. Seats are limited to 20 guests per week and confirmed on a first-come basis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GreenFlag really invite-only and curated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every date night is capped at 20 guests, and the GreenFlag app only unlocks a conversation after a task the woman sets is actually completed — no generic openers, no randoms."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Structured data: Event (next occurrence, computed client-side so it always reflects the upcoming Saturday) -->
+<script>
+(function(){
+  var d = new Date();
+  var day = d.getDay(); // 0 = Sun ... 6 = Sat
+  var daysUntilSat = (6 - day + 7) % 7;
+  if (daysUntilSat === 0 && d.getHours() >= 20) daysUntilSat = 7; // if it's already past 8pm Saturday, point to next week
+  d.setDate(d.getDate() + daysUntilSat);
+  var yyyy = d.getFullYear();
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var dd = String(d.getDate()).padStart(2, '0');
+  var startDate = yyyy + '-' + mm + '-' + dd + 'T20:00:00+05:30';
+
+  var eventLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "GreenFlag Weekly Date Night — Earn the Conversation",
+    "description": "Invitation-only matchmaking date night. 20 curated guests, zero swiping — live, in person.",
+    "startDate": startDate,
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Venue announced upon confirmation",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "HSR Layout, Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "GreenFlag",
+      "url": "https://www.musigoevents.com/"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Women",
+        "price": "0",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://www.musigoevents.com/#waitlist"
+      },
+      {
+        "@type": "Offer",
+        "name": "Men",
+        "price": "599",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://www.musigoevents.com/#waitlist"
+      }
+    ],
+    "maximumAttendeeCapacity": 20
+  };
+
+  var s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.text = JSON.stringify(eventLd);
+  document.head.appendChild(s);
+})();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1060,6 +1197,15 @@
   .nav-ig:hover{color:var(--cream);}
   .nav-ig svg{flex-shrink:0;}
 
+  /* ── FAQ ── */
+  .faq{padding:120px 0;}
+  .faq-section-inner{max-width:720px;margin:0 auto;padding:0 28px;}
+  .faq-list{margin-top:48px;}
+  .faq-item{border-bottom:1px solid var(--line);padding:26px 0;}
+  .faq-item:first-child{border-top:1px solid var(--line);}
+  .faq-q{font-family:'Inter',sans-serif;font-size:17px;font-weight:500;color:var(--cream);margin-bottom:10px;}
+  .faq-a{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
+
   /* ── IG Carousel ── */
   .ig-carousel-wrap{width:100%;overflow:hidden;margin:32px 0 36px;position:relative;}
   .ig-carousel{display:flex;gap:14px;transition:transform .4s cubic-bezier(.25,.8,.25,1);will-change:transform;cursor:grab;user-select:none;}
@@ -1401,6 +1547,37 @@
       </svg>
       Follow on Instagram
     </a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-section-inner">
+    <div class="section-head">
+      <span class="label">Questions</span>
+      <h2 class="serif">Before you ask.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What is GreenFlag?</div>
+        <div class="faq-a">GreenFlag is a weekly invitation-only matchmaking experience in Bangalore, and an upcoming dating app. Instead of swiping, every woman sets a small task and the chat only unlocks once a man actually completes it — effort over swiping.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How much does it cost to attend a date night?</div>
+        <div class="faq-a">Entry is free for women. Entry for men is ₹599. Every date night is capped at 20 curated guests.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where are GreenFlag date nights held?</div>
+        <div class="faq-a">Date nights are held weekly in HSR Layout, Bangalore. The exact venue is shared with guests upon confirmation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I join a date night?</div>
+        <div class="faq-a">Reserve a seat through the waitlist form below. Seats are limited to 20 guests per week and confirmed on a first-come basis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is it really invite-only and curated?</div>
+        <div class="faq-a">Yes. Every date night is capped at 20 guests, and the GreenFlag app only unlocks a conversation after a task the woman sets is actually completed — no generic openers, no randoms.</div>
+      </div>
+    </div>
   </div>
 </section>
 
