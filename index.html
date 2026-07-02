@@ -120,13 +120,16 @@
   var mm = String(d.getMonth() + 1).padStart(2, '0');
   var dd = String(d.getDate()).padStart(2, '0');
   var startDate = yyyy + '-' + mm + '-' + dd + 'T20:00:00+05:30';
+  var endDate = yyyy + '-' + mm + '-' + dd + 'T23:00:00+05:30';
 
   var eventLd = {
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "GreenFlag Weekly Date Night — Earn the Conversation",
     "description": "Invitation-only matchmaking date night. 20 curated guests, zero swiping — live, in person.",
+    "image": "https://www.musigoevents.com/og-image.png",
     "startDate": startDate,
+    "endDate": endDate,
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
@@ -173,7 +176,10 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null;">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
 <style>
   :root{
     --black:#0A0A09;
@@ -881,7 +887,7 @@
   .detail-row:first-of-type{padding-top:0;}
   .detail-row:last-of-type{border-bottom:none;padding-bottom:0;}
   .detail-row .k{
-    color:var(--muted-dark);
+    color:var(--muted);
     letter-spacing:0.12em;
     text-transform:uppercase;
     font-size:10px;
@@ -1213,7 +1219,7 @@
   .ig-post{flex:0 0 100%;border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);background:#000;}
   .ig-post iframe{width:100%;border:none;display:block;}
   .ig-carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:16px;}
-  .ig-dot{width:5px;height:5px;border-radius:50%;background:var(--line);border:none;padding:0;cursor:pointer;transition:background .25s ease,transform .25s ease;}
+  .ig-dot{width:5px;height:5px;border-radius:50%;background:var(--line);border:none;padding:13px;background-clip:content-box;cursor:pointer;transition:background .25s ease,transform .25s ease;}
   .ig-dot.active{background:var(--gold-bright);transform:scale(1.3);}
 </style>
 </head>
@@ -1238,7 +1244,7 @@
 <div class="nav-mobile-menu" id="navMobileMenu">
   <div class="nav-mobile-header">
     <span style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Menu</span>
-    <button style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;line-height:1;" onclick="closeNav()">✕</button>
+    <button style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;line-height:1;" onclick="closeNav()" aria-label="Close menu">✕</button>
   </div>
   <a href="#event" class="nav-mobile-link" onclick="closeNav()">Weekly Date Nights</a>
   <a href="#how" class="nav-mobile-link" onclick="closeNav()">How It Works</a>
@@ -1246,6 +1252,7 @@
   <a href="#waitlist" class="nav-mobile-link" onclick="closeNav()">Join Waitlist</a>
 </div>
 
+<main>
 <section class="hero">
   <div class="eyebrow label">
     <span class="chip">
@@ -1280,7 +1287,7 @@
         <h3 class="serif">"Earn the Conversation" — live, in person, zero swiping involved.</h3>
       </div>
       <div class="event-details">
-        <div class="detail-row"><span class="k">Venue</span><span class="v">To be announced <span style="font-size:11px;color:var(--muted-dark);">(HSR Layout)</span></span></div>
+        <div class="detail-row"><span class="k">Venue</span><span class="v">To be announced <span style="font-size:11px;color:var(--muted);">(HSR Layout)</span></span></div>
         <div class="detail-row"><span class="k">Date</span><span class="v">This Sat, 8 PM</span></div>
         <div class="detail-row"><span class="k">Capacity</span><span class="v">20 guests, curated, no randoms</span></div>
         <div class="detail-row"><span class="k">Entry</span><span class="v">Women, free · Men, ₹599</span></div>
@@ -1523,19 +1530,19 @@
     <div class="ig-carousel-wrap">
       <div class="ig-carousel" id="igCarousel">
         <div class="ig-post">
-          <iframe src="https://www.instagram.com/p/DaOLqESzSsr/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+          <iframe src="https://www.instagram.com/p/DaOLqESzSsr/embed/" scrolling="no" allowtransparency="true" loading="lazy" title="GreenFlag Instagram post: Tinder gave everyone a participation trophy"></iframe>
         </div>
         <div class="ig-post">
-          <iframe src="https://www.instagram.com/p/DaONedzzniO/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+          <iframe src="https://www.instagram.com/p/DaONedzzniO/embed/" scrolling="no" allowtransparency="true" loading="lazy" title="GreenFlag Instagram post: Earn the conversation, live, no swiping"></iframe>
         </div>
         <div class="ig-post">
-          <iframe src="https://www.instagram.com/p/DaOMSy5zStQ/embed/" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+          <iframe src="https://www.instagram.com/p/DaOMSy5zStQ/embed/" scrolling="no" allowtransparency="true" loading="lazy" title="GreenFlag Instagram post: Talking to someone with your actual face"></iframe>
         </div>
       </div>
       <div class="ig-carousel-dots">
-        <button class="ig-dot active" onclick="igGoTo(0)"></button>
-        <button class="ig-dot" onclick="igGoTo(1)"></button>
-        <button class="ig-dot" onclick="igGoTo(2)"></button>
+        <button class="ig-dot active" onclick="igGoTo(0)" aria-label="Show Instagram post 1 of 3"></button>
+        <button class="ig-dot" onclick="igGoTo(1)" aria-label="Show Instagram post 2 of 3"></button>
+        <button class="ig-dot" onclick="igGoTo(2)" aria-label="Show Instagram post 3 of 3"></button>
       </div>
     </div>
 
@@ -1656,6 +1663,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div>GREENFLAG &copy; 2026</div>
