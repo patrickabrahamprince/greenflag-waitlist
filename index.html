@@ -86,7 +86,7 @@
       "name": "Where are GreenFlag date nights held?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Date nights are held weekly in HSR Layout, Bangalore. The exact venue is shared with guests upon confirmation."
+        "text": "Date nights are held every Saturday at Catchup, HSR Layout, Bangalore."
       }
     },
     {
@@ -195,7 +195,7 @@
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "Place",
-      "name": "Venue announced upon confirmation",
+      "name": "Catchup",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "HSR Layout, Bengaluru",
@@ -976,6 +976,31 @@
   a.venue-link svg{flex-shrink:0;opacity:0.85;}
   .event-details .btn-primary{margin-top:14px;width:100%;text-align:center;}
 
+  /* PROMO BANNER */
+  .promo-banner{
+    background:var(--black-soft);
+    border-bottom:1px solid var(--line-gold);
+    padding:18px 24px;
+    text-align:center;
+  }
+  .promo-banner-inner{
+    max-width:640px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:14px 22px;
+  }
+  .promo-banner-text{
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    line-height:1.4;
+    color:var(--cream);
+  }
+  .promo-banner-text strong{color:var(--gold-bright);font-weight:600;}
+  .promo-banner .btn-primary{padding:10px 24px;font-size:11px;}
+
   /* WAITLIST FORM */
   .waitlist{
     text-align:center;
@@ -1313,6 +1338,12 @@
 </div>
 
 <main>
+<section class="promo-banner" aria-label="This week's date night">
+  <div class="promo-banner-inner">
+    <span class="promo-banner-text">This Saturday, 8PM · <strong>CatchUp HSR</strong> · <strong>20 seats</strong>, curated — no swiping, just showing up.</span>
+    <a href="#waitlist" class="btn-primary">Reserve Now</a>
+  </div>
+</section>
 <section class="hero">
   <div class="eyebrow label">
     <span class="chip">
@@ -1347,7 +1378,7 @@
         <h3 class="serif">"Earn the Conversation" — live, in person, zero swiping involved.</h3>
       </div>
       <div class="event-details">
-        <div class="detail-row"><span class="k">Venue</span><span class="v">To be announced <span style="font-size:11px;color:var(--muted);">(HSR Layout)</span></span></div>
+        <div class="detail-row"><span class="k">Venue</span><span class="v">Catchup, HSR Layout</span></div>
         <div class="detail-row"><span class="k">Date</span><span class="v">This Sat, 8 PM</span></div>
         <div class="detail-row"><span class="k">Capacity</span><span class="v">20 guests, curated, no randoms</span></div>
         <div class="detail-row"><span class="k">Entry</span><span class="v">Women, free · Men, ₹599</span></div>
@@ -1634,7 +1665,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Where are GreenFlag date nights held?</div>
-        <div class="faq-a">Date nights are held weekly in HSR Layout, Bangalore. The exact venue is shared with guests upon confirmation.</div>
+        <div class="faq-a">Date nights are held every Saturday at Catchup, HSR Layout, Bangalore.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">How do I join a date night?</div>
